@@ -1,0 +1,318 @@
+﻿/* 
+styles.css
+Del av CjS version 5.3.0
+
+
+
+Denna kod är avsedd att köras tillsammans med pluginet Custom Javascript for Websites 2. I pluginet infogas en länk till basskript.js.
+Skriptet förvaras på serverx. Länken till skriptet är https://serverx.lkl.ltkalmar.se/cjs/sdp.js.
+
+Mer info finns på https://gitlab.lkl.ltkalmar.se/oc/cjs.
+*/
+
+/* OP5 */
+
+.servicepage-buttons {
+   font-weight:normal;
+   margin:auto;
+   margin-bottom:8px;
+   font-family: "open sans", sans-serif;
+   font-size:13pt;
+   width:100%;
+   height:68px;
+   border:none;
+   border-radius:0px;
+   background-image:none;
+}
+
+.servicepage-buttons-ok {
+   color:white;
+   background-color:#9bd780;
+}
+
+.servicepage-buttons-ok:hover {
+   background-color:#9bd780;
+}
+
+.servicepage-buttons-crit {
+   color:white;
+   background-color:#f37374;
+}
+
+.servicepage-buttons-crit:hover {
+   background-color:#f37374;
+}
+
+.servicepage-buttons-warn {
+   color:#666666;
+   background-color:#fbdd6b;
+}
+
+.servicepage-buttons-warn:hover {
+   background-color:#fbdd6b;
+}
+
+.servicepage-buttons-unknown {
+   color:white;
+   background-color:#f1ad5c;
+}
+
+.servicepage-buttons-unknown:hover {
+   background-color:#f1ad5c;
+}
+
+.servicepage-buttons-pending {
+   color:white;
+   background-color:#bbbbbb;
+}
+
+.servicepage-buttons-pending:hover {
+   background-color:#bbbbbb;
+}
+
+.upper-servicepage-buttons {
+   font-weight:bold;
+   color:#555555;
+   font-family:"open sans", sans-serif;
+   font-size:10px;
+   border:none;
+   border-radius:0px;
+   background-color:white;
+   vertical-align:middle;
+   height: 34px;
+   margin:0;
+   padding-bottom:6px;
+   padding-right:13px;
+   padding-left:14px;
+}
+
+.upper-servicepage-buttons:hover {
+   background-color:#EEEEEE;
+}
+
+#buttonDiv {
+   display: block;
+   padding: 55px 0px 55px;
+}
+
+@media screen and (max-height: 1025px) {
+
+   /* Anger att knapparna ska förminskas om fönstret är mindre än 1025 pixlar */
+   .servicepage-buttons {
+      height: 35px;
+      font-size: 10pt;
+   }
+
+   #buttonDiv {
+      display: block;
+      padding: 10px 0px 0px 0px;
+   }
+
+}
+
+#upperDivBlock {
+   text-align: right;
+   width: 30%;
+   float: right;
+}
+
+#checkAllButton {
+   width:95px;
+   display:inline-block;
+   color:#555555;
+   border:none;
+   background-color:white;
+}
+
+#checkAllButton:hover {
+   height:39px;
+   width:95px;
+   display:inline-block;
+   background-color:#EEEEEE;
+   color:#555555;
+   margin-bottom:0px;
+}
+
+#mainelement {
+   vertical-align: middle;
+}
+
+#parentElement {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   vertical-align: middle;
+   height: 100%;
+}
+
+#divElement {
+   text-align: center;
+   margin-bottom: 5%;
+   height: auto;
+   width: auto;
+   flex-grow: 0.5;
+}
+
+#fireworksElement {
+   margin-top: 3%;
+   margin-bottom: auto;
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+   width: 40%;
+}
+
+#textElement {
+   font-size: 150px;
+   margin-left: auto;
+   margin-right: auto
+}
+
+#turnoffLogsButton {
+   display: block;
+   height: 20px;
+   width: 192.83px;
+   cursor: default;
+}
+
+#turnoffLogsButton:hover {
+   background-color:#f0f0f0;
+}
+
+#logsWarning {
+   width: 100%;
+   height: 5%;
+   background-color: darkred;
+   font-size: 15pt;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+
+.customButtons {
+   height:16px;
+   width:16px;
+   margin-left:3px;
+}
+
+.customButtons:hover {
+   cursor: pointer;
+}
+
+.menu-right {
+   text-align: left;
+}
+
+
+
+/* SDP */
+
+#SDPCopyButton {
+   margin-left: 10px;
+}
+
+#SDPInfoText {
+   display:inline-block;
+   margin-left:35%;
+   color:red;
+}
+
+
+
+/* Qradar */
+
+#offenseLink {
+   line-height: 16px;
+}
+
+#ticketImage {
+   width: 16px; 
+   height: 16px; 
+   background: url('https://siem.lkl.ltkalmar.se/console/core/img/icons/edit.gif') 0px 0px no-repeat;
+   vertical-align: top;
+   border: 0;
+}
+
+#ticketTextSpan, #textSpan, #autoTicketText {
+   padding-left: 2px;
+}
+
+#linkImage {
+   width: 16px;
+   height: 16px;
+   background: url('https://siem.lkl.ltkalmar.se/console/sem/img/icons/rules.gif') 0px 0px no-repeat;
+   vertical-align: top;
+   border: 0;
+}
+
+#autoTicketImage {
+   width: 16px; 
+   height: 16px; 
+   background: url('https://siem.lkl.ltkalmar.se/console/sem/img/icons/attacker.gif') 0px 0px no-repeat;
+   vertical-align: top;
+   border: 0;
+   margin-right: 3px;
+}
+
+#autoTicket {
+   line-height: 16px;
+}
+
+
+
+#searchHostnameButton {
+   font-family: "Myriad", "Helvetica", "Tahoma", "Arial", sans-serif;
+   font-size: 12px;
+   height: 18px;
+}
+
+#searchHostnameDiv {
+   display: flex;
+   justify-content: flex-end;
+   width: 40%;
+   float: right;
+   text-align: right;
+}
+
+
+
+/* Cisco AMP */
+
+#buttonsDiv {
+   float:right;
+   width:30%;
+   text-align:right;
+}
+
+#cmdbBtn {
+   margin-left:7%;
+   color: #0084bd;
+}
+
+
+
+/* Qualys */
+
+#qualysSearchHostnameDiv, #qualysSearchIPDiv {
+   display: flex;
+   justify-content: flex-end;
+   width: 39%;
+   float: right;
+   text-align: right;
+}
+
+#qualysSearchHostnameButton, #qualysSearchIPButton {
+   font-family: "Roboto", "Arial", sans-serif;
+   font-size: 12px;
+   height: 25px;
+   background-color: transparent;
+   border-width: 1px;
+   border-radius: 2px;
+}
+
+#qualysSearchHostnameButton:hover, #qualysSearchIPButton:hover {
+   cursor: pointer;
+   background-color: #fdf9df;
+}

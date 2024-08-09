@@ -1,0 +1,80 @@
+﻿{
+   "request": {
+      "subject": "Qradar - ",
+      "resolution": {
+         "resolution_attachments": [],
+         "content": null
+      },
+      "linked_to_request": null,
+      "mode": {
+         "name": "Larm",
+         "id": "303"
+      },
+      "assets": [],
+      "group": {
+         "site": null,
+         "name": "Security Operations Center",
+         "id": "6901"
+      },
+      "requester": {
+         "email_id": "operations.center@regionkalmar.se",
+         "phone": null,
+         "name": "Operations Center",
+         "mobile": null,
+         "is_vipuser": false,
+         "id": "234901",
+         "department": null
+     },
+      "item": null,
+      "impact": {
+         "name": "2. Grupp",
+         "id": "302"
+      },
+      "priority": {
+         "color": "#006600",
+         "name": "3. Medium",
+         "id": "303"
+      },
+      "first_response_due_by_time": null,
+      "udf_fields": {
+      },
+      "subcategory": {
+         "name": "Övervakning",
+         "id": "651"
+      },
+      "status": {
+         "color": "#cfcfcf",
+         "name": "Ny",
+         "id": "301"
+      },
+      "scheduled_start_time": null,
+      "template": {
+         "is_service_template": false,
+         "service_category": null,
+         "name": "Default Request",
+         "id": "4"
+      },
+      "request_type": {
+         "name": "Felanmälan",
+         "id": "302"
+      },
+      "description": "",
+      "urgency": {
+         "name": "2. Normal",
+         "id": "3"
+      },
+      "request_template_task_ids": [],
+      "due_by_time": {
+         "display_value": "28/02/2024 12:00 AM",
+         "value": "1709074800000"
+      },
+      "site": null,
+      "category": {
+         "name": "Infrastruktur",
+         "id": "603"
+      }
+   }
+}
+
+
+
