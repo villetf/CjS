@@ -4,9 +4,9 @@
 //
 //
 // Denna kod är avsedd att köras tillsammans med pluginet Custom Javascript for Websites 2. I pluginet infogas en länk till basskript.js.
-// Skriptet förvaras på serverx. Länken till skriptet är https://serverx.lkl.ltkalmar.se/cjs/qualys.js.
+// Skriptet förvaras på serverx. Länken till skriptet är https://serverx.ltkalmar.se/cjs/qualys.js.
 //
-// Mer info finns på https://gitlab.lkl.ltkalmar.se/oc/cjs.
+// Mer info finns på https://gitlab.ltkalmar.se/oc/cjs.
 
 
 
@@ -66,7 +66,7 @@ function addHostnameButton(currentElement) {
       if (hostname.startsWith('PC')) {
          hostname = hostname.replace('PC', '');
       }
-      window.open(`https://servicedesk.lkl.ltkalmar.se/SearchN.do?searchText=${hostname}&subModSelText=&selectName=global_search`, '_blank', 'height=1000, width=2000');
+      window.open(`https://servicedesk.ltkalmar.se/SearchN.do?searchText=${hostname}&subModSelText=&selectName=global_search`, '_blank', 'height=1000, width=2000');
       sendLog(27, unreplacedHostname);
    };
    const searchDiv = document.createElement('div');
@@ -87,7 +87,7 @@ function addIPButton(currentElement) {
    searchButton.innerText = 'Sök i Netbox';
    searchButton.onclick = () => {
       const ip = currentElement.innerText.replace(searchButton.innerText, '');
-      window.open(`https://netbox.lkl.ltkalmar.se/search/?q=${ip}`, '_blank', 'height=1000, width=2000');
+      window.open(`https://netbox.ltkalmar.se/search/?q=${ip}`, '_blank', 'height=1000, width=2000');
       sendLog(28, ip);
    };
    const searchDiv = document.createElement('div');
@@ -122,7 +122,7 @@ function sendLog(buttonID, currentObject) {
       data = { token: 'xxxxxxxxxxxxxxxxxxxxxxxx', user: username, button: buttonID};
    }
 
-   fetch('https://serverx.lkl.ltkalmar.se/api/log', {
+   fetch('https://serverx.ltkalmar.se/api/log', {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json'

@@ -78,7 +78,7 @@ Nuvarande version är 5.3.0.
 
 ### Added
 
-- Loggningsfunktion som loggar användning av funktioner till [Log4CjS](https://gitlab.lkl.ltkalmar.se/oc/log4cjs).
+- Loggningsfunktion som loggar användning av funktioner till [Log4CjS](https://gitlab.ltkalmar.se/oc/log4cjs).
 - eslint-konfiguration som säkerställer korrekt formatering om man använder eslint.
 - qradar.js: Vid varje hostnamn på sidan läggs nu en Sök i CMDB-knapp till som söker i CMDB i en popup-ruta.
 
@@ -333,7 +333,7 @@ Ovanför denna linje används ett versionsnummer för hela projektet istället f
 ### Added 
 
 - Netbox-knapp som söker efter aktuell host i Netbox.
-- Sök CI-knappen och Netbox-knappen tar bort .lkl.ltkalmar.se i sökningen om hostnamnet slutar med detta.
+- Sök CI-knappen och Netbox-knappen tar bort .ltkalmar.se i sökningen om hostnamnet slutar med detta.
 - Sök CI-knappen och Netbox-knappen tar bort PC och PCX i sökningen om hostnamnet börjar med detta.
 - Last Change innehåller nu även information om hur länge sedan statusen förändrades, och inte bara datum.
 - Visa i changelog-knapp som öppnar hosten i changeloggen.

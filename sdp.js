@@ -4,9 +4,9 @@
 //
 //
 // Denna kod är avsedd att köras tillsammans med pluginet Custom Javascript for Websites 2. I pluginet infogas en länk till basskript.js.
-// Skriptet förvaras på serverx. Länken till skriptet är https://serverx.lkl.ltkalmar.se/cjs/sdp.js.
+// Skriptet förvaras på serverx. Länken till skriptet är https://serverx.ltkalmar.se/cjs/sdp.js.
 //
-// Mer info finns på https://gitlab.lkl.ltkalmar.se/oc/cjs.
+// Mer info finns på https://gitlab.ltkalmar.se/oc/cjs.
 
 /* global $req Swal */
 
@@ -39,7 +39,7 @@ if (getCookie('op5Autofill') && !(getCookie('SDPTicketNumber'))) {
 }
 
 // Sök CI
-if (window.location.href === 'https://servicedesk.lkl.ltkalmar.se/CMDBAction.do?mode=listView&allCIs=true') {
+if (window.location.href === 'https://servicedesk.ltkalmar.se/CMDBAction.do?mode=listView&allCIs=true') {
    const searchString = getCookie('searchLink');
    if (searchString) {
       document.getElementsByClassName('tableSearchButton')[0].click();
@@ -49,7 +49,7 @@ if (window.location.href === 'https://servicedesk.lkl.ltkalmar.se/CMDBAction.do?
 }
 
 // Lägga till kopiera-knapp på ärenden
-if (window.location.href.startsWith('https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID') || window.location.href === ('https://servicedesk.lkl.ltkalmar.se/WOListView.do')) {
+if (window.location.href.startsWith('https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID') || window.location.href === ('https://servicedesk.ltkalmar.se/WOListView.do')) {
    const callback = () => {
       if (!document.getElementById('SDPCopyButton') && document.getElementById('actionsBar')) {
          const copyButton = document.createElement('button');
@@ -68,7 +68,7 @@ if (window.location.href.startsWith('https://servicedesk.lkl.ltkalmar.se/WorkOrd
 }
 
 // Lägga till Gå till OP5-knapp
-if (window.location.href.startsWith('https://servicedesk.lkl.ltkalmar.se/ViewCIDetails.do')) {
+if (window.location.href.startsWith('https://servicedesk.ltkalmar.se/ViewCIDetails.do')) {
    setTimeout(function() {
       let cmdbHost = document.getElementsByName('name')[0].innerText;
       if (cmdbHost.includes('NX')) {
@@ -80,7 +80,7 @@ if (window.location.href.startsWith('https://servicedesk.lkl.ltkalmar.se/ViewCID
       }
       const op5Btn = document.createElement('button');
       op5Btn.onclick = function() {
-         window.open('https://op5.lkl.ltkalmar.se/monitor/index.php/listview/?q=%5Bservices%5D%20host.name%20%3D~%20%22' + cmdbHost + '%22');
+         window.open('https://op5.ltkalmar.se/monitor/index.php/listview/?q=%5Bservices%5D%20host.name%20%3D~%20%22' + cmdbHost + '%22');
          sendLog(13, cmdbHost);
       };
       op5Btn.className = 'btn btn-default btn-xs';
@@ -91,7 +91,7 @@ if (window.location.href.startsWith('https://servicedesk.lkl.ltkalmar.se/ViewCID
 }
 
 // Infoga information i ärende automatiskt
-if (window.location.href === 'https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=newWO&reqTemplate=20101') {
+if (window.location.href === 'https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=newWO&reqTemplate=20101') {
    (() => {
       const link = getCookie('OP5link');
       const hostname = getCookie('OP5hostname');
@@ -130,12 +130,12 @@ if (window.location.href === 'https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?w
 }
 
 // Ange att rätt host ska sökas på och väljas om CI-sökrutan är öppen
-if (window.location.href === 'https://servicedesk.lkl.ltkalmar.se/asset/AssetPopup.jsp?forwardTo=list&module=asset_attachments&from=request&externalframe=true') {
+if (window.location.href === 'https://servicedesk.ltkalmar.se/asset/AssetPopup.jsp?forwardTo=list&module=asset_attachments&from=request&externalframe=true') {
    selectCIs();
 }
 
 // Ange att användaren ska väljas om användarsökrutan är öppen med OC som sökning
-if (window.location.href === 'https://servicedesk.lkl.ltkalmar.se/setup/UsersPopup.jsp?popupfor=searchuser&module=Request&isUser=true&apiModule=requests&apiEntity=requester&searchText=Operations%20Center') {
+if (window.location.href === 'https://servicedesk.ltkalmar.se/setup/UsersPopup.jsp?popupfor=searchuser&module=Request&isUser=true&apiModule=requests&apiEntity=requester&searchText=Operations%20Center') {
    selectUserFromSearch('234901', 'Operations%20Center');
 }
 
@@ -309,11 +309,11 @@ function copyReqId() {
 }
 
 async function createQradarTicket() {
-   if (window.location.href === 'https://servicedesk.lkl.ltkalmar.se/framework/html/blank.html') {
+   if (window.location.href === 'https://servicedesk.ltkalmar.se/framework/html/blank.html') {
       return;
    }
 
-   const response = await fetch('https://serverx.lkl.ltkalmar.se/cjs/resources/ticketTemplate.json');
+   const response = await fetch('https://serverx.ltkalmar.se/cjs/resources/ticketTemplate.json');
    if (!response.ok) {
       alert('Lyckades inte hämta ärendemall från serverx. Inget ärende har skapats.');
       return;
@@ -325,13 +325,13 @@ async function createQradarTicket() {
 
    const xhr = new XMLHttpRequest();
    xhr.withCredentials = false;
-   xhr.open('POST', 'https://servicedesk.lkl.ltkalmar.se/api/v3/requests', false);
+   xhr.open('POST', 'https://servicedesk.ltkalmar.se/api/v3/requests', false);
    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
    xhr.onload = function() {
       const requestId = (JSON.parse(xhr.responseText)).request.id;
       setCookie('SDPTicketNumber', requestId, 5);
-      window.location.href = `https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID=${requestId}`;
+      window.location.href = `https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID=${requestId}`;
    };
    xhr.onerror = function() {
       alert('Lyckades inte göra API-anrop mot SDP för att skapa ärende. Inget ärende har skapats.');
@@ -342,11 +342,11 @@ async function createQradarTicket() {
 }
 
 async function createOP5Ticket() {
-   if (window.location.href === 'https://servicedesk.lkl.ltkalmar.se/framework/html/blank.html') {
+   if (window.location.href === 'https://servicedesk.ltkalmar.se/framework/html/blank.html') {
       return;
    }
 
-   const response = await fetch('https://serverx.lkl.ltkalmar.se/cjs/resources/op5TicketTemplate.json');
+   const response = await fetch('https://serverx.ltkalmar.se/cjs/resources/op5TicketTemplate.json');
    if (!response.ok) {
       alert('Lyckades inte hämta ärendemall från serverx. Inget ärende har skapats.');
       return;
@@ -446,13 +446,13 @@ async function createOP5Ticket() {
    // Gör anrop för att lägga ärende
    const xhr = new XMLHttpRequest();
    xhr.withCredentials = false;
-   xhr.open('POST', 'https://servicedesk.lkl.ltkalmar.se/api/v3/requests', false);
+   xhr.open('POST', 'https://servicedesk.ltkalmar.se/api/v3/requests', false);
    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
    xhr.onload = function() {
       const requestId = (JSON.parse(xhr.responseText)).request.id;
       setCookie('SDPTicketNumber', requestId, 5);
-      window.location.href = `https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID=${requestId}`;
+      window.location.href = `https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID=${requestId}`;
    };
    xhr.onerror = function() {
       alert('Lyckades inte göra API-anrop mot SDP för att skapa ärende. Inget ärende har skapats.');
@@ -469,7 +469,7 @@ function getSystem(hostname) {
       data.append('OPERATION_NAME', 'read');
       const xhr = new XMLHttpRequest();
       xhr.withCredentials = true;
-      xhr.open('POST', 'https://servicedesk.lkl.ltkalmar.se/api/cmdb/cirelationships/' + hostname + '/v%C3%A4rd%20f%C3%B6r');
+      xhr.open('POST', 'https://servicedesk.ltkalmar.se/api/cmdb/cirelationships/' + hostname + '/v%C3%A4rd%20f%C3%B6r');
       xhr.send(data);
       xhr.addEventListener('readystatechange', () => {
          if (xhr.readyState !== 4) {
@@ -491,7 +491,7 @@ function getSupportgroup(system) {
 
       const ownerxhr = new XMLHttpRequest();
       ownerxhr.withCredentials = true;
-      ownerxhr.open('POST', 'https://servicedesk.lkl.ltkalmar.se/api/cmdb/cirelationships/' + system + '/Supportas%20av');
+      ownerxhr.open('POST', 'https://servicedesk.ltkalmar.se/api/cmdb/cirelationships/' + system + '/Supportas%20av');
       ownerxhr.send(ownerdata);
       ownerxhr.onreadystatechange = () => {
          if (ownerxhr.readyState !== 4) {
@@ -547,7 +547,7 @@ function sendLog(buttonID, currentObject) {
       data = { token: 'xxxxxxxxxxxxxxxxx', user: username, button: buttonID};
    }
 
-   fetch('https://serverx.lkl.ltkalmar.se/api/log', {
+   fetch('https://serverx.ltkalmar.se/api/log', {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json'

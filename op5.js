@@ -4,9 +4,9 @@
 //
 //
 // Denna kod är avsedd att köras tillsammans med pluginet Custom Javascript for Websites 2. I pluginet infogas en länk till basskript.js.
-// Skriptet förvaras på serverx. Länken till skriptet är https://serverx.lkl.ltkalmar.se/cjs/op5.js.
+// Skriptet förvaras på serverx. Länken till skriptet är https://serverx.ltkalmar.se/cjs/op5.js.
 //
-// Mer info finns på https://gitlab.lkl.ltkalmar.se/oc/cjs.
+// Mer info finns på https://gitlab.ltkalmar.se/oc/cjs.
 
 
 
@@ -44,12 +44,12 @@ if (getCookie('logsDisabled')) {
 }
 
 // Kod för att lägga till knappar till checksidan i OP5
-if (window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.php/extinfo') || window.location.href.startsWith('https://op5test.lkl.ltkalmar.se/monitor/index.php/extinfo')) {
+if (window.location.href.startsWith('https://op5.ltkalmar.se/monitor/index.php/extinfo') || window.location.href.startsWith('https://op5test.ltkalmar.se/monitor/index.php/extinfo')) {
    addServicepageButtons();
 }
 
 // Checka alla-knapp
-if (window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.php/listview') || window.location.href.startsWith('https://op5test.lkl.ltkalmar.se/monitor/index.php/listview')) {
+if (window.location.href.startsWith('https://op5.ltkalmar.se/monitor/index.php/listview') || window.location.href.startsWith('https://op5test.ltkalmar.se/monitor/index.php/listview')) {
    const menuDiv = document.getElementsByClassName('main-toolbar')[0];
    const clearElement = menuDiv.getElementsByClassName('clear')[0];
 
@@ -68,7 +68,7 @@ if (window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.p
 }
 
 // Automatiskt klick på Done-knappen när man gör Check now
-if (window.location.href === 'https://op5.lkl.ltkalmar.se/monitor/index.php/cmd/obj' || window.location.href === 'https://op5test.lkl.ltkalmar.se/monitor/index.php/cmd/obj') {
+if (window.location.href === 'https://op5.ltkalmar.se/monitor/index.php/cmd/obj' || window.location.href === 'https://op5test.ltkalmar.se/monitor/index.php/cmd/obj') {
    if (document.getElementsByClassName('alert notice')[0]) {
       history.go(-2);
       sendLog(8);
@@ -76,7 +76,7 @@ if (window.location.href === 'https://op5.lkl.ltkalmar.se/monitor/index.php/cmd/
 }
 
 // Lägger till listvy-element
-if (window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.php/listview') || window.location.href.startsWith('https://op5test.lkl.ltkalmar.se/monitor/index.php/listview')) {
+if (window.location.href.startsWith('https://op5.ltkalmar.se/monitor/index.php/listview') || window.location.href.startsWith('https://op5test.ltkalmar.se/monitor/index.php/listview')) {
 
    // Lägger till knapp för att stänga av loggning
    const choiceList = document.getElementById('filter-query-multi-action');
@@ -134,7 +134,7 @@ if (window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.p
 }
 
 // Öppna automatiskt alla ändringar i pending changes
-if (window.location.href === ('https://op5.lkl.ltkalmar.se/monitor/op5/nacoma/export.php') || window.location.href === ('https://op5test.lkl.ltkalmar.se/monitor/op5/nacoma/export.php')) {
+if (window.location.href === ('https://op5.ltkalmar.se/monitor/op5/nacoma/export.php') || window.location.href === ('https://op5test.ltkalmar.se/monitor/op5/nacoma/export.php')) {
    const open = document.getElementsByClassName('changelisting')[0];
    // eslint-disable-next-line no-restricted-syntax -- Style-egenskapen är nödvändig eftersom OP5 använder den för att avgöra vad som ska vara utfällt.
    open.style = 'nothing';
@@ -290,8 +290,8 @@ function addServicepageButtons() {
 // Funktion för att söka efter CI
 function searchCI() {
    let hostname = getParameterByName('host');
-   if (hostname.includes('.lkl.ltkalmar.se')) {
-      hostname = hostname.replace('.lkl.ltkalmar.se', '');
+   if (hostname.includes('.ltkalmar.se')) {
+      hostname = hostname.replace('.ltkalmar.se', '');
    }
    if (hostname.includes('PCX')) {
       hostname = hostname.replace('PCX', 'NX');
@@ -300,7 +300,7 @@ function searchCI() {
       hostname = hostname.replace('PC', '');
    }
    setCookie('searchLink', hostname, 5);
-   window.open('https://servicedesk.lkl.ltkalmar.se/CMDBAction.do?mode=listView&allCIs=true', '_blank');
+   window.open('https://servicedesk.ltkalmar.se/CMDBAction.do?mode=listView&allCIs=true', '_blank');
    sendLog(1, hostname);
 }
 
@@ -311,7 +311,7 @@ function createRequestAck() {
    setCookie('OP5hostname', eventInfo.hostname, 25);
    setCookie('OP5output', eventInfo.output, 25);
    setCookie('OP5lastChange', eventInfo.lastChange, 25);
-   window.open('https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=newWO&reqTemplate=20101');
+   window.open('https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=newWO&reqTemplate=20101');
    sendLog(2, eventInfo.hostname);
    window.open(eventInfo.ackLink, '_self');
 }
@@ -325,7 +325,7 @@ function autogenerateRequest() {
    setCookie('op5Hostname', eventInfo.hostname, 10);
    setCookie('op5output', eventInfo.output, 10);
    setCookie('op5LastChange', eventInfo.lastChange, 10);
-   window.open('https://servicedesk.lkl.ltkalmar.se', '_blank');
+   window.open('https://servicedesk.ltkalmar.se', '_blank');
 
    const ticketNumInterval = setInterval(() => {
       if (!getCookie('SDPTicketNumber')) {
@@ -341,10 +341,10 @@ function autogenerateRequest() {
          sticky: 1,
          notify: true,
          persistent: true,
-         comment: `https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID=${getCookie('SDPTicketNumber')} //${getCookie('SDPUsername')}`
+         comment: `https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID=${getCookie('SDPTicketNumber')} //${getCookie('SDPUsername')}`
       };
 
-      fetch('https://op5.lkl.ltkalmar.se/api/command/ACKNOWLEDGE_SVC_PROBLEM', {
+      fetch('https://op5.ltkalmar.se/api/command/ACKNOWLEDGE_SVC_PROBLEM', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json'
@@ -367,26 +367,26 @@ function showGrafana() {
    const hostRegex = /.*-.*-.*/g;
    sendLog(3, hostname);
    if (hostRegex.test(hostname)) {
-      window.open('https://servery.lkl.ltkalmar.se/grafana/d/tLcwDxnVz/health-switchar?orgId=1&var-host=' + hostname + '&kiosk');
+      window.open('https://servery.ltkalmar.se/grafana/d/tLcwDxnVz/health-switchar?orgId=1&var-host=' + hostname + '&kiosk');
       return;
    }
-   window.open('https://servery.lkl.ltkalmar.se/grafana/d/JQ6p8uM4k/health?orgId=1&refresh=1m&var-host=' + hostname);
+   window.open('https://servery.ltkalmar.se/grafana/d/JQ6p8uM4k/health?orgId=1&refresh=1m&var-host=' + hostname);
 }
 
 // Funktion för att öppna i Netbox
 function showNetbox() {
    const hostname = getParameterByName('host');
-   window.open('https://netbox.lkl.ltkalmar.se/search/?q=' + hostname);
+   window.open('https://netbox.ltkalmar.se/search/?q=' + hostname);
    sendLog(4, hostname);
 }
 
 // Funktion för att öppna i Changelog
 function showChangelog() {
    const hostname = getParameterByName('host');
-   if (window.location.href.startsWith('https://op5test.lkl.ltkalmar.se')) {
-      window.open('https://op5test.lkl.ltkalmar.se/monitor/index.php/configuration/configure?page=changelog_history.php%3Fmatch_username%3D%26match_object%3D' + hostname + '%26match_time_start%3D%26match_time_stop%3D', '_self');
+   if (window.location.href.startsWith('https://op5test.ltkalmar.se')) {
+      window.open('https://op5test.ltkalmar.se/monitor/index.php/configuration/configure?page=changelog_history.php%3Fmatch_username%3D%26match_object%3D' + hostname + '%26match_time_start%3D%26match_time_stop%3D', '_self');
    } else {
-      window.open('https://op5.lkl.ltkalmar.se/monitor/index.php/configuration/configure?page=changelog_history.php%3Fmatch_username%3D%26match_object%3D' + hostname + '%26match_time_start%3D%26match_time_stop%3D', '_self');
+      window.open('https://op5.ltkalmar.se/monitor/index.php/configuration/configure?page=changelog_history.php%3Fmatch_username%3D%26match_object%3D' + hostname + '%26match_time_start%3D%26match_time_stop%3D', '_self');
    }
    sendLog(5, hostname);
 }
@@ -446,9 +446,9 @@ function addFireworks(blueElement) {
       const currentDate = new Date();
       const monthIndex = currentDate.getMonth();
       if (monthIndex === 11) {
-         imageelement.src = 'https://serverx.lkl.ltkalmar.se/cjs/resources/santa-dance.gif';
+         imageelement.src = 'https://serverx.ltkalmar.se/cjs/resources/santa-dance.gif';
       } else {
-         imageelement.src = 'https://serverx.lkl.ltkalmar.se/cjs/resources/fireworks.gif';
+         imageelement.src = 'https://serverx.ltkalmar.se/cjs/resources/fireworks.gif';
       }
       divElement.appendChild(imageelement);
 
@@ -483,7 +483,7 @@ function addListviewButtons() {
    for (let i = 0; i < filterRows.length; i++) {
       const tempRow = filterRows[i];
       let buttonRow;
-      if (window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.php/listview?q=%5Bhosts') || window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.php/listview?q=%5Bhosts')) {
+      if (window.location.href.startsWith('https://op5.ltkalmar.se/monitor/index.php/listview?q=%5Bhosts') || window.location.href.startsWith('https://op5.ltkalmar.se/monitor/index.php/listview?q=%5Bhosts')) {
          if (!(tempRow.querySelector('td a[href^=\'/monitor/index.php/configuration/configure/?type=\']'))) {
             continue;
          }
@@ -495,15 +495,15 @@ function addListviewButtons() {
       // Lägg till kopiera larminfo-knapp i listvyn
       const copyImg = document.createElement('img');
       copyImg.classList.add('customButtons', 'customCopyButton');
-      copyImg.src = 'https://serverx.lkl.ltkalmar.se/cjs/resources/copyicon.png';
+      copyImg.src = 'https://serverx.ltkalmar.se/cjs/resources/copyicon.png';
       copyImg.title = 'Kopiera larminfo';
       copyImg.onclick = function() {
          copyAlertInfo(tempRow);
-         copyImg.src = 'https://serverx.lkl.ltkalmar.se/cjs/resources/checkicon.png';
+         copyImg.src = 'https://serverx.ltkalmar.se/cjs/resources/checkicon.png';
          copyImg.title = 'Länk kopierad';
       };
 
-      const op5Regex = /https:\/\/op5\.lkl\.ltkalmar\.se\/monitor\/index\.php\/listview.*services.*/;
+      const op5Regex = /https:\/\/op5\.ltkalmar\.se\/monitor\/index\.php\/listview.*services.*/;
       if (buttonRow && op5Regex.test(window.location.href) && (!buttonRow.getElementsByClassName('customCopyButton')[0])) {
          buttonRow.appendChild(copyImg);
       }
@@ -561,7 +561,7 @@ function searchCIFromList(tempRow) {
       buttonHostname = buttonHostname.replace('PC', '');
    }
    setCookie('searchLink', buttonHostname, 5);
-   window.open('https://servicedesk.lkl.ltkalmar.se/CMDBAction.do?mode=listView&allCIs=true', '_blank');
+   window.open('https://servicedesk.ltkalmar.se/CMDBAction.do?mode=listView&allCIs=true', '_blank');
    sendLog(10, buttonHostname);
 }
 
@@ -572,7 +572,7 @@ function createReqFromList(tempRow) {
    setCookie('OP5hostname', alertInfo.buttonHostname, 25);
    setCookie('OP5output', alertInfo.buttonOutput, 25);
    setCookie('OP5lastChange', alertInfo.buttonLastChange, 25);
-   window.open('https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=newWO&reqTemplate=20101');
+   window.open('https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=newWO&reqTemplate=20101');
    sendLog(11, alertInfo.buttonHostname);
    tempRow.querySelector('input').click();
 }
@@ -584,7 +584,7 @@ function getListviewServiceInfo(tempRow) {
    let copyLink;
    let buttonOutput;
    let buttonLastChange;
-   if (window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.php/listview?q=%5Bservices') || window.location.href.startsWith('https://op5.lkl.ltkalmar.se/monitor/index.php/listview/?q=%5Bservices')) {
+   if (window.location.href.startsWith('https://op5.ltkalmar.se/monitor/index.php/listview?q=%5Bservices') || window.location.href.startsWith('https://op5.ltkalmar.se/monitor/index.php/listview/?q=%5Bservices')) {
       if (!tempRow.querySelectorAll('td[data-table=\'services\']')[0]) {
          return;
       }
@@ -682,7 +682,7 @@ function sendLog(buttonID, currentObject) {
       data = { token: 'XXXXXXXXXXXXXXXX', user: username, button: buttonID};
    }
 
-   fetch('https://serverx.lkl.ltkalmar.se/api/log', {
+   fetch('https://serverx.ltkalmar.se/api/log', {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json'

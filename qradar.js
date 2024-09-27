@@ -4,9 +4,9 @@
 //
 //
 // Denna kod är avsedd att köras tillsammans med pluginet Custom Javascript for Websites 2. I pluginet infogas en länk till basskript.js.
-// Skriptet förvaras på serverx. Länken till skriptet är https://serverx.lkl.ltkalmar.se/cjs/sdp.js.
+// Skriptet förvaras på serverx. Länken till skriptet är https://serverx.ltkalmar.se/cjs/sdp.js.
 //
-// Mer info finns på https://gitlab.lkl.ltkalmar.se/oc/cjs.
+// Mer info finns på https://gitlab.ltkalmar.se/oc/cjs.
 
 
 
@@ -55,7 +55,7 @@ if (document.getElementsByClassName('heading')[0]) {
    const ticketImage = document.createElement('img');
    ticketImage.id = 'ticketImage';
    ticketImage.className = 'DA_IMAGELISTLITE';
-   ticketImage.src = 'https://siem.lkl.ltkalmar.se/console/core/js/themes/shim.gif';
+   ticketImage.src = 'https://siem.ltkalmar.se/console/core/js/themes/shim.gif';
    ticketButton.appendChild(ticketImage);
 
    const ticketText = document.createElement('span');
@@ -84,7 +84,7 @@ if (document.getElementsByClassName('heading')[0]) {
    const linkImage = document.createElement('img');
    linkImage.class = 'DA_IMAGELISTLITE';
    linkImage.id = 'linkImage';
-   linkImage.src = 'https://siem.lkl.ltkalmar.se/console/core/js/themes/shim.gif';
+   linkImage.src = 'https://siem.ltkalmar.se/console/core/js/themes/shim.gif';
    linkButton.appendChild(linkImage);
 
    const linkText = document.createElement('span');
@@ -112,7 +112,7 @@ if (document.getElementsByClassName('heading')[0]) {
    const autoTicketImage = document.createElement('img');
    autoTicketImage.id = 'autoTicketImage';
    autoTicketImage.className = 'DA_IMAGELISTLITE';
-   autoTicketImage.src = 'https://siem.lkl.ltkalmar.se/console/core/js/themes/shim.gif';
+   autoTicketImage.src = 'https://siem.ltkalmar.se/console/core/js/themes/shim.gif';
    autoTicketButton.appendChild(autoTicketImage);
 
    const autoTicketText = document.createElement('span');
@@ -137,8 +137,8 @@ async function searchForHostname() {
 // Funktion för att kopiera offenselänk och skapa ärende
 function createTicket() {
    copyOffenseLink(eventNumber => {
-      window.open('https://siem.lkl.ltkalmar.se/console/do/sem/properties?appName=Sem&dispatch=editNotes&attribute=notes&daoName=offense&id=' + eventNumber);
-      window.open('https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=newWO&reqTemplate=20101');
+      window.open('https://siem.ltkalmar.se/console/do/sem/properties?appName=Sem&dispatch=editNotes&attribute=notes&daoName=offense&id=' + eventNumber);
+      window.open('https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=newWO&reqTemplate=20101');
    });
 }
 
@@ -146,7 +146,7 @@ function createTicket() {
 function copyOffenseLink(callback) {
    const title = (document.getElementsByClassName('heading')[0]).innerText;
    const eventNumber = title.replace('Offense ', '');
-   navigator.clipboard.writeText('https://siem.lkl.ltkalmar.se/console/qradar/jsp/QRadar.jsp?appName=Sem&pageId=OffenseSummary&summaryId=' + eventNumber)
+   navigator.clipboard.writeText('https://siem.ltkalmar.se/console/qradar/jsp/QRadar.jsp?appName=Sem&pageId=OffenseSummary&summaryId=' + eventNumber)
       .then(() => {
          callback(eventNumber);
       });
@@ -161,9 +161,9 @@ async function autoGenerateTicket() {
    const eventNumber = title.replace('Offense ', '');
    setCookie('qradarEventnumber', eventNumber, 5);
    setCookie('qradarSubject', `Qradar - ${rows[elementIndex].textContent}`, 5);
-   setCookie('qradarDescription', encodeURIComponent(`<div>${rows[elementIndex].textContent}<br /></div><div><br /></div><div>Offense: ${eventNumber}<br /></div><div><br /></div><div style="text-align: left" dir="ltr"><a href="https://siem.lkl.ltkalmar.se/console/qradar/jsp/QRadar.jsp?appName=Sem&amp;pageId=OffenseSummary&amp;summaryId=${eventNumber}" target="_blank">https://siem.lkl.ltkalmar.se/console/qradar/jsp/QRadar.jsp?appName=Sem&amp;pageId=OffenseSummary&amp;summaryId=${eventNumber}</a><br /></div>`), 5);
+   setCookie('qradarDescription', encodeURIComponent(`<div>${rows[elementIndex].textContent}<br /></div><div><br /></div><div>Offense: ${eventNumber}<br /></div><div><br /></div><div style="text-align: left" dir="ltr"><a href="https://siem.ltkalmar.se/console/qradar/jsp/QRadar.jsp?appName=Sem&amp;pageId=OffenseSummary&amp;summaryId=${eventNumber}" target="_blank">https://siem.ltkalmar.se/console/qradar/jsp/QRadar.jsp?appName=Sem&amp;pageId=OffenseSummary&amp;summaryId=${eventNumber}</a><br /></div>`), 5);
 
-   window.open('https://servicedesk.lkl.ltkalmar.se', '_blank');
+   window.open('https://servicedesk.ltkalmar.se', '_blank');
 
    const findCookieInterval = setInterval(async() => {
       if (!getCookie('SDPTicketNumber')) {
@@ -176,8 +176,8 @@ async function autoGenerateTicket() {
          'Accept': 'application/json',
          'Qradarcsrf': (getCookie('QRadarCSRF'))
       };
-      const commentText = `https://servicedesk.lkl.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID=${SDPTicketNumber} //${getCookie('SDPUsername')}`;
-      const qradarCommentCall = await fetch(`https://siem.lkl.ltkalmar.se/api/siem/offenses/${eventNumber}/notes?note_text=${encodeURIComponent(commentText)}`, {
+      const commentText = `https://servicedesk.ltkalmar.se/WorkOrder.do?woMode=viewWO&woID=${SDPTicketNumber} //${getCookie('SDPUsername')}`;
+      const qradarCommentCall = await fetch(`https://siem.ltkalmar.se/api/siem/offenses/${eventNumber}/notes?note_text=${encodeURIComponent(commentText)}`, {
          method: 'POST',
          headers: headers
       });
@@ -211,7 +211,7 @@ function addHostnameButton(currentElement) {
       if (hostname.startsWith('PC')) {
          hostname = hostname.replace('PC', '');
       }
-      window.open(`https://servicedesk.lkl.ltkalmar.se/SearchN.do?searchText=${hostname}&subModSelText=&selectName=global_search`, '_blank', 'height=1000, width=2000');
+      window.open(`https://servicedesk.ltkalmar.se/SearchN.do?searchText=${hostname}&subModSelText=&selectName=global_search`, '_blank', 'height=1000, width=2000');
       sendLog(16, unreplacedHostname);
    };
    const searchDiv = document.createElement('div');
@@ -267,7 +267,7 @@ function sendLog(buttonID, currentObject) {
       data = { token: 'xxxxxxxxxxxxxxxxxx', user: username, button: buttonID};
    }
 
-   fetch('https://serverx.lkl.ltkalmar.se/api/log', {
+   fetch('https://serverx.ltkalmar.se/api/log', {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json'

@@ -29,7 +29,7 @@ Klicka på den runda knappen i övre högra hörnet för att aktivera regexet. K
 
 !["Bild av pluginet"](./resources/readme_screenshot_3.png "Bild av pluginet")
 
-Du får nu upp en ruta där du ska ta bort all text (inklusive tomma rader) och lägga in länken https://serverx.lkl.ltkalmar.se/cjs/basskript.js.
+Du får nu upp en ruta där du ska ta bort all text (inklusive tomma rader) och lägga in länken https://serverx.ltkalmar.se/cjs/basskript.js.
 
 !["Bild av pluginet"](./resources/readme_screenshot_4.png "Bild av pluginet")
 
@@ -212,8 +212,8 @@ I Qualys finns det två knappar, Sök i CMDB och Sök i Netbox.
 
 ## Loggning
 
-När du använder funktioner i CjS så loggas detta automatiskt till Log4CjS, ett API på servern serverX. Loggarna läggs därefter i en databas, där man kan se statistik över hur funktionerna används. Datan som samlas in är tid, vilken funktion som använts, eventuellt objekt som hanterats (t.ex. ett CI), vilken hemsida man befinner sig på, och vem som använt funktionen. Mer info om Log4CjS finns [här.](https://gitlab.lkl.ltkalmar.se/oc/log4cjs)
+När du använder funktioner i CjS så loggas detta automatiskt till Log4CjS, ett API på servern serverX. Loggarna läggs därefter i en databas, där man kan se statistik över hur funktionerna används. Datan som samlas in är tid, vilken funktion som använts, eventuellt objekt som hanterats (t.ex. ett CI), vilken hemsida man befinner sig på, och vem som använt funktionen. Mer info om Log4CjS finns [här.](https://gitlab.ltkalmar.se/oc/log4cjs)
 
 ## Support
 
-För buggrapporter och förbättringsförslag, [öppna ett issue i Gitlab.](https://gitlab.lkl.ltkalmar.se/oc/cjs/-/issues "Issue") Märk issuet med någon av labelarna "Bugg" eller "Förbättringsförslag".
+För buggrapporter och förbättringsförslag, [öppna ett issue i Gitlab.](https://gitlab.ltkalmar.se/oc/cjs/-/issues "Issue") Märk issuet med någon av labelarna "Bugg" eller "Förbättringsförslag".

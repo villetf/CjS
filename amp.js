@@ -4,9 +4,9 @@
 //
 //
 // Denna kod är avsedd att köras tillsammans med pluginet Custom Javascript for Websites 2. I pluginet infogas en länk till basskript.js.
-// Skriptet förvaras på serverX. Länken till skriptet är https://serverx.lkl.ltkalmar.se/cjs/sdp.js.
+// Skriptet förvaras på serverX. Länken till skriptet är https://serverx.ltkalmar.se/cjs/sdp.js.
 //
-// Mer info finns på https://gitlab.lkl.ltkalmar.se/oc/cjs.
+// Mer info finns på https://gitlab.ltkalmar.se/oc/cjs.
 
 // Kollar via cookie om loggning är avstängt, om det är det läggs varningsruta till i toppen av sidan
 if (getCookie('logsDisabled')) {
@@ -41,12 +41,12 @@ function createButtons(rowsNumber) {
       // Skapar Ping-knapp
       const pingButton = document.createElement('a');
       pingButton.id = 'pingBtn';
-      pingButton.href = 'https://siem.lkl.ltkalmar.se/console/plugins/91/entry2?ip=' + hostname;
+      pingButton.href = 'https://siem.ltkalmar.se/console/plugins/91/entry2?ip=' + hostname;
       pingButton.setAttribute('target', '_blank');
       pingButton.innerText = 'Pinga host';
       pingButton.onclick = () => {
-         if (hostname.includes('.lkl.ltkalmar.se')) {
-            hostname = hostname.replace('.lkl.ltkalmar.se', '');
+         if (hostname.includes('.ltkalmar.se')) {
+            hostname = hostname.replace('.ltkalmar.se', '');
          }
          sendLog(17, hostname);
       };
@@ -59,8 +59,8 @@ function createButtons(rowsNumber) {
       cmdbButton.setAttribute('target', '_blank');
       cmdbButton.innerText = 'Sök CI';
       cmdbButton.onclick = () => {
-         if (hostname.includes('.lkl.ltkalmar.se')) {
-            hostname = hostname.replace('.lkl.ltkalmar.se', '');
+         if (hostname.includes('.ltkalmar.se')) {
+            hostname = hostname.replace('.ltkalmar.se', '');
          }
          const unreplacedHostname = hostname;
          if (hostname.includes('PCX')) {
@@ -70,7 +70,7 @@ function createButtons(rowsNumber) {
             hostname = hostname.replace('PC', '');
          }
 
-         window.open(`https://servicedesk.lkl.ltkalmar.se/SearchN.do?searchText=${hostname}&subModSelText=&selectName=global_search`, '_blank', 'height=1000, width=2000');
+         window.open(`https://servicedesk.ltkalmar.se/SearchN.do?searchText=${hostname}&subModSelText=&selectName=global_search`, '_blank', 'height=1000, width=2000');
          sendLog(18, unreplacedHostname);
       };
 
@@ -116,7 +116,7 @@ function sendLog(buttonID, currentObject) {
       data = { token: 'XXXXXXXXXXXXXXXX', user: username, button: buttonID};
    }
 
-   fetch('https://serverx.lkl.ltkalmar.se/api/log', {
+   fetch('https://serverx.ltkalmar.se/api/log', {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json'
